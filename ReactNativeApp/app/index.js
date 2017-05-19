@@ -1,3 +1,4 @@
+import './common/globalConstants'
 import React,{PureComponent} from 'react'
 import dva,{connect} from 'dva'
 import {  AsyncStorage } from 'react-native'
