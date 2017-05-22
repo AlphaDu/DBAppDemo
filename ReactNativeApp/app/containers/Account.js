@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Image, Button } from 'react-native'
-import { connect } from 'dva'
-
+import {observer} from 'mobx-react/native'
 import { NavigationActions } from '../utils'
 
-@connect()
+@observer
 class Account extends Component {
   static navigationOptions = {
     title: 'Account',

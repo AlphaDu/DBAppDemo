@@ -43,7 +43,7 @@ export default class TabBarView extends Component{
         return(
             <ScrollableTabBarView
                 renderTabBar = {()=>(
-                    <TabBar
+                    <TabBar navigation={this.props.navigation}
                         tabTitles = {tabTiles}
                         renderIcons ={rendertabIcons}
                         renderSelectIcons = {selectedTabIcons}
@@ -52,6 +52,9 @@ export default class TabBarView extends Component{
                 tabBarPosition='bottom'
                 locked
                 scrollWithoutAnimation
+                onChangeTab ={(tab)=>{
+                    console.log(tab)
+                }}
             >
                 <InvestView tabLabel=""/>
                 <FinancingView tabLabel=""/>
