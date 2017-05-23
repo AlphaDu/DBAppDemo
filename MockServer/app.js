@@ -10,18 +10,18 @@ var config = require('./mock.config');
 app.use(CORS);
 for (var url in config){
     if(config.hasOwnProperty(url)){
-        let response = {};
+        var response = {};
         if (typeof config[url]  == 'function'){
             response = config[url]();
         }else{
             response = config[url];
         }
         app.get(url,function(req,res,next){
-            res.json(response)
+            res.json(response);
         });
     }
 }
-
+autoRoutes(path, join(_dirname,'./controllers'));
 if (!module.parent) {
     var PORT = 9003;
     console.log('[INFO] Msg board RESTful API listening at localhost:%s', PORT);

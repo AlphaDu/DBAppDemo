@@ -2,9 +2,10 @@ import React, {PureComponent} from 'react'
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native'
-import Swiper from 'react-native-swiper'
+
 import {Grid, Row, Col} from 'react-native-elements'
 import EIcon from 'react-native-vector-icons/Entypo'
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -65,27 +66,23 @@ export default class TabbarView extends PureComponent {
                     <Text>test</Text>
                 </View>
                 <View style={{height: '30%'}}>
-                    <Swiper style={styles.wrapper} height={200} horizontal={true} autoplay>
-                        <View style={styles.slide1}>
-                            <Text style={styles.text}>Hello Swiper</Text>
-                        </View>
-                        <View style={styles.slide2}>
-                            <Text style={styles.text}>Beautiful</Text>
-                        </View>
-                        <View style={styles.slide3}>
-                            <Text style={styles.text}>And simple</Text>
-                        </View>
-                        <View >
-                            <Text>And simple</Text>
-                        </View>
-                    </Swiper>
+
                 </View>
                 <View style={{width: '100%', height: '60%',flexDirection:'column',borderWidth:1}}>
-                    <View style={{height:'40%',flexDirection:'row'}}>
-                        <View  style={{alignItems: 'center', justifyContent: 'center',flexDirection:'column',flex:2,backgroundColor:'#FF6A6A',margin:5}}>
-                            <EIcon name="shopping-cart" style={{fontSize:70}}/>
-                            <Text>1</Text>
+                    <View style={{flex:2,flexDirection:'row'}}>
+
+                        <View  style={{flex:2,backgroundColor:'#FF6A6A',margin:5}}>
+                            <TouchableOpacity style={{flex:1,alignItems: 'center', justifyContent: 'center',flexDirection:'column'}}
+                                              onPress={()=>{
+                                                this.props.navigation.navigate('DirectInvestList');
+                                              }}
+                            >
+                            <EIcon name="shopping-cart" style={{fontSize:70,color:'#ffffff'}}/>
+                            <Text style={{fontWeight: 'bold',color:'#ffffff',fontSize:20}}>直投专区</Text>
+                                <Text style={{fontWeight: 'bold',color:'#ffffff',fontSize:13}}>最高8.8%</Text>
+                            </TouchableOpacity>
                         </View>
+
                         <View style={{flex:1,alignItems: 'center', justifyContent: 'center',backgroundColor:'#FF6A6A',margin:5}}>
                             <Text>1</Text>
                         </View>

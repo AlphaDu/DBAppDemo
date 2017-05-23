@@ -9,7 +9,6 @@ import {
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import {observer} from 'mobx-react/native'
 import  loginStore from '../mobx/LoginStore';
-import {NavigationActions} from 'react-navigation'
 @observer
 export default class TabBar extends Component{
     static propType = {
@@ -36,13 +35,9 @@ export default class TabBar extends Component{
                                                     activeOpacity={0.8}
                                                     style={styles.tabs}
                                 onPress={()=>{
-                                    if (i == 2 && loginStore.isLogin === false ){
-                                        console.log('unLogin');
-                                        this.props.navigation.navigate('LoginView');
-                                    }else{
-                                        console.log('gotoPage:' + i);
+
                                         this.props.goToPage(i)
-                                    }
+
                                 }}
                             >
                                 <View style={styles.tabitem}>

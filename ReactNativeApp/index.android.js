@@ -11,8 +11,8 @@ import {
     Text,
     View
 } from 'react-native';
-import LoginPage from './app/page/Login'
-import TabbarView from './app/containers/TabbarView'
-import App from './app/common/Navigation'
-AppRegistry.registerComponent('ReactNativeApp', () =>App);
+import Tabbar from './app/containers/TabbarView'
+
+
+AppRegistry.registerComponent('ReactNativeApp', () =>Tabbar);
 
