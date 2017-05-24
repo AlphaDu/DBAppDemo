@@ -1,0 +1,1 @@
+exports.use = require('../../middleware/simpleLogger');

@@ -35,8 +35,11 @@ export default class TabBar extends Component{
                                                     activeOpacity={0.8}
                                                     style={styles.tabs}
                                 onPress={()=>{
-
-                                        this.props.goToPage(i)
+                                        if(i == 2){
+                                            this.props.navigation.navigate('LoginView')
+                                        }else{
+                                            this.props.goToPage(i)
+                                        }
 
                                 }}
                             >

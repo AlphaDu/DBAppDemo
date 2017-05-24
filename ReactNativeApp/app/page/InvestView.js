@@ -9,7 +9,7 @@ import {
 import {Grid, Row, Col} from 'react-native-elements'
 import EIcon from 'react-native-vector-icons/Entypo'
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
-
+import InvestList from '../containers/DirectInvestList'
 const styles=StyleSheet.create({
     wrapper: {
         width: 100, height: 100

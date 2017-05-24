@@ -12,7 +12,35 @@ import {
     View
 } from 'react-native';
 import Tabbar from './app/containers/TabbarView'
-
-
-AppRegistry.registerComponent('ReactNativeApp', () =>Tabbar);
+import App from './app/common/Navigation'
+(function forbiddenConsole () {
+    [
+        'assert',
+        'clear',
+        'count',
+        'debug',
+        'dir',
+        'dirxml',
+        'error',
+        'exception',
+        'group',
+        'groupCollapsed',
+        'groupEnd',
+        'info',
+        'log',
+        'profile',
+        'profileEnd',
+        'table',
+        'time',
+        'timeEnd',
+        'timeStamp',
+        'trace',
+        'warn',
+    ].forEach(methodName => {
+        console[methodName] = () => {
+            /* noop */
+        };
+    });
+})();
+AppRegistry.registerComponent('ReactNativeApp', () =>App);
 

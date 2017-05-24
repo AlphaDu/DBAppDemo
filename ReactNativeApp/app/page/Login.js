@@ -1,14 +1,28 @@
 import React, {Component} from 'react'
-import {StyleSheet, View, Button, Text, TextInput, Image, Switch} from 'react-native'
+import {StyleSheet, View, Button, Text, TextInput, Image, Switch,ToastAndroid,Platform} from 'react-native'
 import Icon from 'react-native-vector-icons/EvilIcons'
 import loginStore from '../mobx/LoginStore'
 import {observer} from 'mobx-react/native'
+import {reaction} from 'mobx'
+import Loading from '../components/Loading'
 @observer
 export default class Login extends Component {
     static navigationOptions=({navigation}) => ({
         title: '登录',
     });
     constructor(){
+        super();
+        this.store = loginStore;
+        reaction(
+            ()=>this.store.msg,
+            (msg)=>{
+                if(Platform.OS === 'android'){
+                    ToastAndroid.show(msg,ToastAndroid.SHORT)
+                }else{
+
+                }
+            }
+        );
         super();
         this.state = {
             username:loginStore.id,
@@ -85,10 +99,12 @@ export default class Login extends Component {
                         <Text>记住用户名</Text>
                     </View>
                 </View>
+                <Loading isShow={loginStore.isFetching}/>
                 <Button
                     style={{width: 200}} title="登陆"
                     onPress={() => {
-                        loginStore.mockLogin({
+
+                        loginStore.login({
                             username:this.state.username,
                             password:this.state.password
                         });

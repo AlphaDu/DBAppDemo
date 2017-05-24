@@ -47,19 +47,18 @@ export default class TabBarView extends Component{
                         tabTitles = {tabTiles}
                         renderIcons ={rendertabIcons}
                         renderSelectIcons = {selectedTabIcons}
+                        navigation={this.props.navigation}
                     />
                 )}
                 tabBarPosition='bottom'
                 locked
                 scrollWithoutAnimation
-                onChangeTab ={(tab)=>{
-                    console.log(tab)
-                }}
+
             >
-                <InvestView tabLabel="" />
-                <FinancingView tabLabel=""/>
-                <AccoutnView tabLabel=""/>
-                <MoreView tabLabel=""/>
+                <InvestView tabLabel="" navigation={this.props.navigation}/>
+                <FinancingView tabLabel="" navigation={this.props.navigation}/>
+                <AccoutnView tabLabel="" navigation={this.props.navigation}/>
+                <MoreView tabLabel="" navigation={this.props.navigation}/>
             </ScrollableTabBarView>
         )
     }
