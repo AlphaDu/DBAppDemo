@@ -3,7 +3,7 @@ import {StyleSheet, View, Button, Text, TextInput, Image, Switch,ToastAndroid,Pl
 import Icon from 'react-native-vector-icons/EvilIcons'
 import loginStore from '../mobx/LoginStore'
 import {observer} from 'mobx-react/native'
-import {reaction} from 'mobx'
+import {reaction,autorun} from 'mobx'
 import Loading from '../components/Loading'
 @observer
 export default class Login extends Component {
@@ -14,10 +14,10 @@ export default class Login extends Component {
         super();
         this.store = loginStore;
         reaction(
-            ()=>this.store.msg,
-            (msg)=>{
-                if(Platform.OS === 'android'){
-                    ToastAndroid.show(msg,ToastAndroid.SHORT)
+            ()=>this.store.isFetching,
+            (fetch)=>{
+                if(Platform.OS === 'android' && this.store.msg.trim() !== "" && fetch === false){
+                    ToastAndroid.show(this.store.msg,ToastAndroid.SHORT)
                 }else{
 
                 }

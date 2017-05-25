@@ -1,12 +1,11 @@
 var Mock = require('mockjs');
 function mockVestList (req, res, next) {
     // /url?page=2&percount=10
-    var TOTAL_COUNT=193;
+    var TOTAL_COUNT=53;
     var PER_COUNT=10;
     var responseData={};
-
     function idgenerator (orderNum) {
-        return parseInt(parseInt(Math.random() * 100000).toString()  + orderNum);
+        return parseInt(parseInt(Math.random() * 100000).toString()  + "000"+orderNum);
     }
     var template = {
         label:Mock.Random.cword(5),
@@ -50,10 +49,10 @@ function mockVestList (req, res, next) {
 
             data.push(Object.assign({id:idgenerator((page - 1) * per + j)},{
                 label:Mock.Random.cword(5),
-                progress:parseInt(Math.random()*100)*1000,
-                remain:Math.random()*1000 ,
-                limit: 360,
-                earning: parseFloat(63.40847086040856).toFixed(2) + '%'
+                progress:parseInt(Math.random()*100) + "%",
+                remain:parseInt(Math.random()*1000 ),
+                limit:parseInt(Math.random()*1000 ) ,
+                earning: parseFloat(Math.random()*100).toFixed(2) + '%'
             }))
         }
         res.send({

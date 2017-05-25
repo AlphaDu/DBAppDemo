@@ -34,10 +34,10 @@ class LoginStore extends HttpStore{
                 }
                 this.isFetching = false;
             });
-        }catch (error){
+        }catch (err){
             runInAction(()=>{
-                this.isFetching = false ;
-                this.msg = error;
+                this.msg = err;
+                this.isFetching = false;
             });
 
         }
