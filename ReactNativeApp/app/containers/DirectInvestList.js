@@ -47,7 +47,6 @@ export default class InvestList extends Component {
     render () {
         return (
             <View style={{flex:1}}>
-
                 <FlatList
                     data={this.store.listData}
                     keyExtractor={this._keyExtractor}
@@ -56,7 +55,6 @@ export default class InvestList extends Component {
                     onEndReached={this._onEndReach}
                     refreshing={false}
                     onEndReachedThreshold={0.5}
-
                 />
                 <Loading isShow={this.store.isFetching}/>
             </View>

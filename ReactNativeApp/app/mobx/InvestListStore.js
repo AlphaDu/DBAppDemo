@@ -15,7 +15,6 @@ class InvestListStore extends HttpStore{
         const URL = REQUEST_URL + "?page="+this.page+"&per=" + PER_PAGE;
         try {
             this.isFetching=true;
-
             const result=await this._fetchDataFromUrl(URL);
             runInAction(() => {
                 this.isFetching=false;

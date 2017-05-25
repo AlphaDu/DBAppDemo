@@ -7,13 +7,7 @@ function mockVestList (req, res, next) {
     function idgenerator (orderNum) {
         return parseInt(parseInt(Math.random() * 100000).toString()  + "000"+orderNum);
     }
-    var template = {
-        label:Mock.Random.cword(5),
-        progress:parseInt(Math.random()*100)*1000,
-        remain:Math.random()*1000 ,
-        limit: 360,
-        earning: parseFloat(63.40847086040856).toFixed(2) + '%'
-    };
+
     var page=parseInt(req.query.page);
     var per=parseInt(req.query.per);
     var remainNum=TOTAL_COUNT - (page - 1) * per;
