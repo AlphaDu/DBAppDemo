@@ -43,6 +43,9 @@ export default class CommonHttpStore{
                         'Accept': 'application/json'
                     },
                     body:data
+                }).then(response => {
+                    if (response.status == 200) return response.json();
+                    reject('非200错误');
                 }).then(responseData=>{
                     if (responseData) {
                         resolve(responseData);

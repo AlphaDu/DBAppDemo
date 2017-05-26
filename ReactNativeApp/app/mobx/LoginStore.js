@@ -6,15 +6,13 @@ const URL = 'http://172.20.10.4:9003/mock/login';
 class LoginStore extends HttpStore{
     @observable isLogin = false;
     @persist @observable isRememberAccount = false;
-    @persist @observable id = '';
-
-    @observable username = '';
+    @persist @observable username = '';
     @observable isFetching = false ;
     @observable token = '';
     @observable msg = '';
     @action mockLogin = ({username = '',password = ''})=>{
         if (username === 'yfdu' && password === '123456') {
-            this.id = 'yfdu';
+            this.username = 'yfdu';
             this.isLogin = true;
         }
     };
@@ -26,12 +24,11 @@ class LoginStore extends HttpStore{
             this.isFetching  = true;
             const data = await this._postDataToUrl(URL,{username,password});
             runInAction(()=>{
-                if(data){
+                if(data.attr == "1"){
                     this.isLogin = true;
-                    this.username  =  data.username;
-                }else{
-                    this.msg = data.msg;
+                    this.username  =  username;
                 }
+                this.msg = data.msg||'未知错误';
                 this.isFetching = false;
             });
         }catch (err){

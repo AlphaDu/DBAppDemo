@@ -1,9 +1,9 @@
 var fs = require('fs');
 var path = require('path');
 function SimpleDb(relativePath){
-    this.dbPath = path.resolve(__dirnamr,relativePath);
+    this.dbPath = path.resolve(__dirname,relativePath);
 }
-SimpleDb.prototype.isAvailable = function(){
+SimpleDb.prototype._isAvailable = function(){
     return fs.existsSync(this.dbPath);
 };
 SimpleDb.prototype.read = function (){
@@ -33,4 +33,4 @@ SimpleDb.prototype.delDb = function () {
         console.error('DB file does not exist');
     }
 };
-module,exports = SimpleDb;
+module.exports = SimpleDb;

@@ -7,6 +7,7 @@ import {CircularProgress} from 'react-native-circular-progress';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Loading from '../components/Loading'
 import LoadMoreFooter from '../components/LoadMoreFooter'
+
 @observer
 export default class InvestList extends Component {
     static navigationOptions = {

@@ -5,6 +5,9 @@ import loginStore from '../mobx/LoginStore'
 import {observer} from 'mobx-react/native'
 import {reaction,autorun} from 'mobx'
 import Loading from '../components/Loading'
+import {
+    NavigationActions,
+} from 'react-navigation'
 @observer
 export default class Login extends Component {
     static navigationOptions=({navigation}) => ({
@@ -23,22 +26,31 @@ export default class Login extends Component {
                 }
             }
         );
+        reaction(
+            ()=>this.store.isLogin,
+            (isLogin) =>{
+                if(isLogin) this.props.navigation.goBack();
+            }
+        );
         super();
         this.state = {
-            username:loginStore.id,
+            username:loginStore.username,
             isRemeber:loginStore.isRememberAccount
         }
     }
     onUsernameInput = (username)=>{
         this.setState({
             username
-        })
+        });
+        loginStore.username = username
     };
     onPasswordInput = (password)=>{
         this.setState({
             password
         })
     };
+
+
     render () {
         const {isRememberAccount} = loginStore;
         return (
@@ -70,7 +82,7 @@ export default class Login extends Component {
                                        placeholder="证件号/手机号码/网银账号"
                                        placeholderTextColor='#D1D1D1'
                                        onChangeText={this.onUsernameInput}
-                                       defaultValue={this.state.username}
+                                       defaultValue={loginStore.isRememberAccount?this.state.username:''}
                             />
                         </View>
                     </View>
@@ -82,6 +94,7 @@ export default class Login extends Component {
                         <View style={styles.verticalLine}/>
                         <View style={styles.inputArea}>
                             <TextInput underlineColorAndroid="transparent"
+                                       secureTextEntry={true}
                                        placeholder="请输入登录密码"
                                        placeholderTextColor='#D1D1D1'
                                        onChangeText={this.onPasswordInput}
@@ -113,6 +126,9 @@ export default class Login extends Component {
             </View>
 
         )
+
+    }
+    componentWillUnmount(){
 
     }
 }

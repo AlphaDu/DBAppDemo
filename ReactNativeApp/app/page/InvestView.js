@@ -5,7 +5,7 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native'
-
+import Swiper from '../components/Swiper'
 import {Grid, Row, Col} from 'react-native-elements'
 import EIcon from 'react-native-vector-icons/Entypo'
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -59,16 +59,38 @@ const styles=StyleSheet.create({
 
 });
 export default class TabbarView extends PureComponent {
+    constructor(){
+        super();
+        this.state = {
+            showSwiper:false
+        }
+    }
+    _renderSwiper(){
+        if(this.state.showSwiper){
+            return (
+                <View style={{flex:1}}>
+                    <Swiper/>
+                </View>
+            )
+        }else{
+            return (
+                <View style={{flex:1}}/>
+                )
+        }
+    }
+    //android有BUG，Swiper需要延迟渲染
+    componentDidMount(){
+        setTimeout(()=>{
+            this.setState({
+                showSwiper:true
+            })
+        },0)
+    }
     render () {
         return (
-            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
-                <View>
-                    <Text>test</Text>
-                </View>
-                <View style={{height: '30%'}}>
-
-                </View>
-                <View style={{width: '100%', height: '60%',flexDirection:'column',borderWidth:1}}>
+            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#f0f0f0'}}>
+                {this._renderSwiper()}
+                <View style={{width: '100%', flex:2,flexDirection:'column'}}>
                     <View style={{flex:2,flexDirection:'row'}}>
 
                         <View  style={{flex:2,backgroundColor:'#FF6A6A',margin:5}}>

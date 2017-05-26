@@ -8,6 +8,7 @@ import InvestView from '../page/InvestView'
 import FinancingView from '../page/FinancingView'
 import AccoutnView from '../page/AccountView'
 import MoreView from '../page/MoreView'
+import Swiper from '../components/Swiper'
 const tabTiles = ['投资','融资','账户','更多'];
 
 rendertabIcons = [
@@ -38,7 +39,26 @@ selectedTabIcons = [
         <SimpleLineIcons name="layers" color="#FFA500"/>
     ),
 ];
-export default class TabBarView extends Component{
+export default class TabBarView extends
+    Component{
+    static navigationOptions = {
+        header:null
+    };
+    _onChangeTab = ({i}) =>{
+        this.props.navigation.setParams({
+           params:{ title:this.getTitleLabel(i)}
+        })
+    };
+
+    getTitleLabel(i){
+        switch(i){
+
+            case 0:return '投资';
+            case 1:return '融资';
+            case 2:return '账户';
+            default :return '';
+        }
+    }
     render(){
         return(
             <ScrollableTabBarView
@@ -51,9 +71,10 @@ export default class TabBarView extends Component{
                     />
                 )}
                 tabBarPosition='bottom'
-                locked
-                scrollWithoutAnimation
-
+                locked={true}
+                scrollWithoutAnimation ={false}
+                onChangeTab={this._onChangeTab}
+                lazyLoad
             >
                 <InvestView tabLabel="" navigation={this.props.navigation}/>
                 <FinancingView tabLabel="" navigation={this.props.navigation}/>

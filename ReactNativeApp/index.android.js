@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import Tabbar from './app/containers/TabbarView'
 import App from './app/common/Navigation'
+
 (function forbiddenConsole () {
     [
         'assert',
@@ -42,5 +43,7 @@ import App from './app/common/Navigation'
         };
     });
 })();
-AppRegistry.registerComponent('ReactNativeApp', () =>App);
+
+AppRegistry.registerComponent('ReactNativeApp', () =>App
+);
 

@@ -25,7 +25,7 @@ export default class TabBar extends Component{
                                     <View style={styles.tabbar}>
                                     {
                                         this.props.tabs.map((tab,i)=>{
-                                            let color = this.props.activeTab === i ?'FFA500':'gray';
+                                            let color = this.props.activeTab === i ?'#FFA500':'gray';
                                             let iconRenderFunc = this.props.activeTab == i ?
                                                 this.props.renderSelectIcons[i]:
                                                 this.props.renderIcons[i];
@@ -35,7 +35,7 @@ export default class TabBar extends Component{
                                                     activeOpacity={0.8}
                                                     style={styles.tabs}
                                 onPress={()=>{
-                                        if(i == 2){
+                                        if(i == 2 && !loginStore.isLogin){
                                             this.props.navigation.navigate('LoginView')
                                         }else{
                                             this.props.goToPage(i)
