@@ -27,7 +27,7 @@ function mockVestList (req, res, next) {
                 progress:parseInt(Math.random()*100) + '%',
                 remain:parseFloat(Math.random()*1000).toFixed(2),
                 limit: 360,
-                earning: parseFloat(63.40847086040856).toFixed(2) + '%'
+                earning: parseFloat(Math.random()*100).toFixed(2) + '%'
             }));
 
         }
