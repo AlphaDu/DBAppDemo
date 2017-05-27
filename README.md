@@ -14,3 +14,7 @@
 	要修改android或ios目录下的文件
 			*现在用到的需要与原生建立连接的库有react-netive-vector-icons。需要
 			修改gradle.properties。具体步骤请查看github上的doc
+			
+			
+Mock启动方式:npm start，端口9003。
+apk发送请求地址现写死为172.120.10.4:9003。如有需要请先自行修改

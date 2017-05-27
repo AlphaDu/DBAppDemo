@@ -1,1 +1,1 @@
-exports.use = require('../../middleware/simpleLogger');
+exports.use = require('../../middleware/simpleLogger')
