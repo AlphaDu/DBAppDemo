@@ -15,19 +15,18 @@ export default class Login extends Component {
     });
     constructor(){
         super();
-        this.store = loginStore;
         reaction(
-            ()=>this.store.isFetching,
+            ()=>loginStore.isFetching,
             (fetch)=>{
-                if(Platform.OS === 'android' && this.store.msg.trim() !== "" && fetch === false){
-                    ToastAndroid.show(this.store.msg,ToastAndroid.SHORT)
+                if(Platform.OS === 'android' && loginStore.msg.trim() !== "" && fetch === false){
+                    ToastAndroid.show(loginStore.msg,ToastAndroid.SHORT)
                 }else{
 
                 }
             }
         );
         reaction(
-            ()=>this.store.isLogin,
+            ()=>loginStore.isLogin,
             (isLogin) =>{
                 if(isLogin) this.props.navigation.goBack();
             }

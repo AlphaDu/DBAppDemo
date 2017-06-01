@@ -11,5 +11,8 @@ exports.POST = function(req,res,next){
     var username =reqj.username;
     var password =reqj.password;
     var resData =loginService.login(username,password);
-    res.json(resData);
+    setTimeout(()=>{
+        res.json(resData);
+    },2000);
+
 };
